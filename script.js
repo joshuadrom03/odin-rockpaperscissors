@@ -1,6 +1,5 @@
 
 //create a function that  radomly returns string values rock,paper or scissors
-
 function getComputerChoice(){
 
     let rand = Math.random();
@@ -16,10 +15,7 @@ function getComputerChoice(){
     }
 }
 
-
-
 //create a function that gets the users choice and returns it
-
 function getHumanChoice(){
 
     let choice = prompt("Enter your throw: Rock, Paper, or scissors")
@@ -37,20 +33,15 @@ function getHumanChoice(){
         return "Please enter a valid input";
     }
 }
-//create 2 score variables for the player and the computer
 
 let humanScore = 0;
 let computerScore = 0;
 
 //create a function that takes two choices as arguments,plays a round, adds a score to the winner
-
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
-
 function playRound(humanChoice, computerChoice){
 
-    humanChoice = humanSelection
-    computerChoice = computerSelection;
+    humanChoice = getHumanChoice();
+    computerChoice = getComputerChoice();
 
      if (humanChoice === "rock" && computerChoice === "rock"){
         console.log("Tie, rock and rock");
@@ -58,7 +49,7 @@ function playRound(humanChoice, computerChoice){
      } else if (humanChoice === "rock" && computerChoice === "paper"){
         computerScore++;
         console.log("You lose!, paper beats rock");
-        console.log("player score: " + humanScore + " computer score: " + computerScore);   
+        console.log("player score: " + humanScore + " computer score: " + computerScore); 
 
      } else if (humanChoice === "rock" && computerChoice === "scissors"){
         humanScore++;
@@ -76,7 +67,7 @@ function playRound(humanChoice, computerChoice){
      } else if (humanChoice === "paper" && computerChoice === "rock"){
         humanScore++;
         console.log("You win!, paper beats rock");
-        console.log("player score: " + humanScore + " computer score: " + computerScore);  
+        console.log("player score: " + humanScore + " computer score: " + computerScore); 
 
      } else if (humanChoice === "scissors" && computerChoice === "scissors"){
         console.log("Tie, scissors and scissors");
@@ -93,9 +84,22 @@ function playRound(humanChoice, computerChoice){
 
      } else {
         console.log("invalid")
+
      }
 
 }
 
-playRound(humanSelection, computerSelection);
+//create a function that calls playRound 5 times
+function playGame(){
 
+    let roundCount = 0;
+    
+    for (roundCount; roundCount < 5; roundCount++){
+        playRound();
+    }
+    console.log("Game over!!!")
+
+}
+
+//call the main function
+playGame();
