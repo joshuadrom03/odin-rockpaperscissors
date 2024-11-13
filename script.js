@@ -39,3 +39,8 @@ function getHumanChoice(){
 }
 
 //console.log(getHumanChoice());
+
+//create 2 score variables for the player and the computer
+
+let humanScore = 0;
+let computerScore = 0;
