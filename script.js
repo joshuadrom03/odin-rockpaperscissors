@@ -1,4 +1,8 @@
 
+let humanScore = 0;
+let computerScore = 0;
+let playerChoice;
+
 //create a function that  radomly returns string values rock,paper or scissors
 function getComputerChoice(){
 
@@ -15,32 +19,35 @@ function getComputerChoice(){
     }
 }
 
-//create a function that gets the users choice and returns it
-function getHumanChoice(){
+const button1 = document.querySelector("#rock");
+button1.addEventListener("click",function (e) {
 
-    let choice = prompt("Enter your throw: Rock, Paper, or scissors")
+    console.log("rock");
+    playerChoice = "rock";
+    playRound();
+});
 
-    if (choice.toLowerCase() === "rock"){
-        return "rock";
+const button2 = document.querySelector("#paper");
+button2.addEventListener("click",function (e){
 
-    } else if(choice.toLowerCase() === "paper"){
-        return "paper";
+    console.log("paper");
+    playerChoice = "paper";
+    playRound();
+});
 
-    } else if (choice.toLowerCase() === "scissors"){
-        return "scissors";
+const button3 = document.querySelector("#scissors");
+button3.addEventListener("click",function (e){
 
-    } else{
-        return "Please enter a valid input";
-    }
-}
+    console.log("scissors");
+    playerChoice = "scissors";
+    playRound();
+});
 
-let humanScore = 0;
-let computerScore = 0;
 
 //create a function that takes two choices as arguments,plays a round, adds a score to the winner
 function playRound(humanChoice, computerChoice){
 
-    humanChoice = getHumanChoice();
+    humanChoice = playerChoice;
     computerChoice = getComputerChoice();
 
      if (humanChoice === "rock" && computerChoice === "rock"){
@@ -89,7 +96,9 @@ function playRound(humanChoice, computerChoice){
 
 }
 
+
 //create a function that calls playRound 5 times
+/*
 function playGame(){
 
     let roundCount = 0;
@@ -103,3 +112,4 @@ function playGame(){
 
 //call the main function
 playGame();
+*/
