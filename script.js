@@ -2,6 +2,7 @@
 let humanScore = 0;
 let computerScore = 0;
 let playerChoice;
+const div = document.querySelector("#gameplay")
 
 //create a function that  radomly returns string values rock,paper or scissors
 function getComputerChoice(){
@@ -22,25 +23,22 @@ function getComputerChoice(){
 const button1 = document.querySelector("#rock");
 button1.addEventListener("click",function (e) {
 
-    console.log("rock");
     playerChoice = "rock";
-    playRound();
+    playGame();
 });
 
 const button2 = document.querySelector("#paper");
 button2.addEventListener("click",function (e){
 
-    console.log("paper");
     playerChoice = "paper";
-    playRound();
+    playGame();
 });
 
 const button3 = document.querySelector("#scissors");
 button3.addEventListener("click",function (e){
 
-    console.log("scissors");
     playerChoice = "scissors";
-    playRound();
+    playGame();
 });
 
 
@@ -49,67 +47,59 @@ function playRound(humanChoice, computerChoice){
 
     humanChoice = playerChoice;
     computerChoice = getComputerChoice();
+    console.log(humanChoice);
 
      if (humanChoice === "rock" && computerChoice === "rock"){
-        console.log("Tie, rock and rock");
+        div.textContent = "Tie, rock and rock, player score: " + humanScore + " computer score: " + computerScore;
 
      } else if (humanChoice === "rock" && computerChoice === "paper"){
         computerScore++;
-        console.log("You lose!, paper beats rock");
-        console.log("player score: " + humanScore + " computer score: " + computerScore); 
+        div.textContent = "You lose!, paper beats rock, player score: " + humanScore + " computer score: " + computerScore;
 
      } else if (humanChoice === "rock" && computerChoice === "scissors"){
         humanScore++;
-        console.log("You win!, rock beats scissors");
-        console.log("player score: " + humanScore + " computer score: " + computerScore);  
+        div.textContent= "You win!, rock beats scissors, player score: " + humanScore + " computer score: " + computerScore;
 
      } else if (humanChoice === "paper" && computerChoice === "paper"){
-        console.log("Tie, paper and paper");
+        div.textContent = "Tie, paper and paper, player score: " + humanScore + " computer score: " + computerScore;
 
      } else if (humanChoice === "paper" && computerChoice === "scissors"){
         computerScore++;
-        console.log("You lose!, scissors beats paper");
-        console.log("player score: " + humanScore + " computer score: " + computerScore);  
+        div.textContent = "You lose!, scissors beats paper, player score: " + humanScore + " computer score: " + computerScore; 
 
      } else if (humanChoice === "paper" && computerChoice === "rock"){
         humanScore++;
-        console.log("You win!, paper beats rock");
-        console.log("player score: " + humanScore + " computer score: " + computerScore); 
+        div.textContent = "You win!, paper beats rock, player score: " + humanScore + " computer score: " + computerScore ;
 
      } else if (humanChoice === "scissors" && computerChoice === "scissors"){
-        console.log("Tie, scissors and scissors");
+        div.textContent = "Tie, scissors and scissors, player score: " + humanScore + " computer score: " + computerScore;
 
      } else if (humanChoice === "scissors" && computerChoice === "rock"){
         computerScore++;
-        console.log("You lose!, rock beats scissors");
-        console.log("player score: " + humanScore + " computer score: " + computerScore);  
-
+        div.textContent = "You lose!, rock beats scissors, player score: " + humanScore + " computer score: " + computerScore ;
+        
      } else if (humanChoice === "scissors" && computerChoice === "paper"){
         humanScore++;
-        console.log("You  win!, scissors beats paper");
-        console.log("player score: " + humanScore + " computer score: " + computerScore);  
+        div.textContent = "You  win!, scissors beats paper, player score: " + humanScore + " computer score: " + computerScore;
 
-     } else {
-        console.log("invalid")
-
-     }
+     } 
 
 }
 
 
 //create a function that calls playRound 5 times
-/*
+
 function playGame(){
 
-    let roundCount = 0;
+    let scorelimit = 5;
     
-    for (roundCount; roundCount < 5; roundCount++){
-        playRound();
-    }
-    console.log("Game over!!!")
+        if (humanScore == scorelimit){
+            div.textContent = "Game over !, Player wins"
+    
+        } else if(computerScore == scorelimit){
+            div.textContent = "Game over !, Computer wins"
 
+        } else {
+            playRound();
+        }
 }
-
-//call the main function
-playGame();
-*/
